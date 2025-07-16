@@ -1,5 +1,7 @@
 # Automated ETL Pipeline for Social Media Sentiment Analysis
 
+![Project Charts](images/analysis_charts.png)
+
 This project is a complete, end-to-end ETL (Extract, Transform, Load) pipeline built with Python. It automatically extracts tweet data from a CSV file, cleans and transforms the data using Pandas, and loads it into a structured PostgreSQL database. The final stage involves querying the database and performing sentiment analysis to generate actionable insights, which are visualized with Matplotlib and Seaborn.
 
 ---

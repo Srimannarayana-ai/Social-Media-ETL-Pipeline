@@ -6,11 +6,12 @@ This project is a complete, end-to-end ETL (Extract, Transform, Load) pipeline b
 
 ## Tech Stack
 
-- **Language:** Python
+- **Language:** Python, SQL
 - **Data Manipulation:** Pandas
 - **Database:** PostgreSQL
 - **Connectivity:** SQLAlchemy, psycopg2
 - **Analysis & Visualization:** JupyterLab, Matplotlib, Seaborn
+- **Version Control:** Git & GitHub
 
 ---
 

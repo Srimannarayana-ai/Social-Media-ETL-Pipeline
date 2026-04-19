@@ -22,7 +22,7 @@ This project is a complete, end-to-end ETL (Extract, Transform, Load) pipeline b
 * **Automated ETL Process:** The core of the project is a Python script (`src/etl_pipeline.py`) that handles the entire data pipeline, making the process repeatable and efficient.
 * **Optimized Database Schema:** The PostgreSQL database was designed with a clean schema (`sql/create_tables.sql`) to ensure data integrity and efficient querying.
 * **Secure Credential Management:** Database passwords are kept secure and separate from code using a `.env` file, which is ignored by version control via `.gitignore`.
-* **Insightful Data Visualization:** The analysis notebook (`analysis/twitter_analysis.ipynb`) queries the processed data to produce clear visualizations that reveal key trends in sentiment and topic volume.
+* **Insightful Data Visualization:** The analysis notebook (`src/twitter_analysis.ipynb`) queries the processed data to produce clear visualizations that reveal key trends in sentiment and topic volume.
 
 ---
 
@@ -37,8 +37,8 @@ The easiest way to run this project is using Docker. It will automatically set u
     ```
 
 2.  **Set Environment Variables:**
-    - Create a `.env` file in the root directory.
-    - Add these credentials to it:
+    - Duplicate the provided `.env.example` file and rename the new copy to `.env` in the root directory.
+    - Add your desired credentials to it. The system will use these to secure your database:
       ```env
       DB_PASSWORD=SecurePassword123!
       POSTGRES_PASSWORD=SecurePassword123!
@@ -50,6 +50,7 @@ The easiest way to run this project is using Docker. It will automatically set u
     ```
     This single command will:
     - Download and configure the PostgreSQL database.
+    - Map the database securely to port `15432` on your local machine to automatically avoid common port-5432 conflicts with any pre-existing Windows PostgreSQL installations.
     - Automatically create the required `tweets` tables.
     - Build a Python container and install all dependencies.
     - Run the ETL pipeline script.

@@ -10,7 +10,7 @@ services:
       - POSTGRES_DB=social_media_db
       - POSTGRES_USER=postgres
     ports:
-      - "5432:5432"
+      - "15432:5432"
     volumes:
       - social_media_db_data:/var/lib/postgresql/data
       # Automatically initialize tables on start

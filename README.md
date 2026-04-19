@@ -28,26 +28,37 @@ This project is a complete, end-to-end ETL (Extract, Transform, Load) pipeline b
 
 ## How to Run This Project Locally
 
+The easiest way to run this project is using Docker. It will automatically set up the Postgres database and run the ETL script.
+
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/Srimannarayana-ai/Social-Media-ETL-Pipeline.git](https://github.com/Srimannarayana-ai/Social-Media-ETL-Pipeline.git)
+    git clone https://github.com/Srimannarayana-ai/Social-Media-ETL-Pipeline.git
     cd Social-Media-ETL-Pipeline
     ```
-2.  **Set up the environment:**
-    - Ensure you have Python and PostgreSQL installed.
-    - Create a Python virtual environment: `python -m venv venv`
-    - Activate it: `.\venv\Scripts\activate`
-    - Install dependencies: `pip install -r requirements.txt`
-3.  **Database Setup:**
-    - Create a PostgreSQL database named `social_media_db`.
-    - Run the `sql/create_tables.sql` script to create the `tweets` table.
-4.  **Set Environment Variables:**
+
+2.  **Set Environment Variables:**
     - Create a `.env` file in the root directory.
-    - Add your database password to it: `DB_PASSWORD=your_password_here`
-5.  **Run the ETL Pipeline:**
+    - Add these credentials to it:
+      ```env
+      DB_PASSWORD=SecurePassword123!
+      POSTGRES_PASSWORD=SecurePassword123!
+      ```
+
+3.  **Run with Docker Compose:**
     ```bash
-    python src/etl_pipeline.py
+    docker-compose up --build -d
     ```
+    This single command will:
+    - Download and configure the PostgreSQL database.
+    - Automatically create the required `tweets` tables.
+    - Build a Python container and install all dependencies.
+    - Run the ETL pipeline script.
+
+4.  **Check the logs:**
+    ```bash
+    docker logs social_media_etl
+    ```
+    You should see success messages indicating the data has been extracted, transformed, and loaded into the database!
 ---
 
 ## Project Outcome

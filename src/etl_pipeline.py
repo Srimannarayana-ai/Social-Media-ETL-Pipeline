@@ -6,7 +6,8 @@ from urllib.parse import quote_plus # <-- IMPORT THE FIX
 
 def extract_data(file_name):
     """Reads data from a CSV file located in the 'data' directory."""
-    file_path = os.path.join(os.getcwd(), '..', 'data', file_name)
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    file_path = os.path.join(base_dir, 'data', file_name)
     try:
         df = pd.read_csv(file_path, encoding='latin1', header=None)
         print("✅ Data extracted successfully!")
@@ -42,8 +43,11 @@ def load_to_db(df):
     # URL-encode the password to handle special characters
     encoded_password = quote_plus(db_password)
     
+    # Retrieve DB_HOST from environment, default to localhost
+    db_host = os.getenv("DB_HOST", "localhost")
+    
     # Create database connection string and engine with the encoded password
-    db_url = f'postgresql+psycopg2://postgres:{encoded_password}@localhost:5432/social_media_db'
+    db_url = f'postgresql+psycopg2://postgres:{encoded_password}@{db_host}:5432/social_media_db'
     engine = create_engine(db_url)
 
     try:
